@@ -5,13 +5,13 @@
  */
 
 import _ from 'lodash';
-import {EventEmitter, setImmediate, Promise} from 'k-core';
+import {EventTarget, setImmediate, Promise} from 'k-core';
 
 import ajax from './ajax';
 import hooks from './hooks';
 import STATUS from './STATUS';
 
-export default class Requester extends EventEmitter {
+export default class Requester extends EventTarget {
     constructor(options) {
         super(options);
         this.options = options;
@@ -27,7 +27,7 @@ export default class Requester extends EventEmitter {
                 .catch(_.bind(this.processXhrException, this))
                 .ensure(_.bind(hooks.afterEachRequest, this));
         }).catch(function (e) {  // to catch running exception in constructor
-            this.emit('error', {
+            this.fire('error', {
                 error: e
             });
             return Promise.reject(e);
@@ -127,7 +127,7 @@ export default class Requester extends EventEmitter {
         // 并且是一个Error
         if (result && result.error instanceof Error) {
             // 先抛出去异常
-            this.emit('error', result);
+            this.fire('error', result);
         }
 
         hooks.eachFailure.call(this, result);

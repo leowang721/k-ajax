@@ -1,6 +1,6 @@
 {
     "name": "k-ajax",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": {
       "name": "Leo Wang",
       "email": "leowang721@gmail.com",
@@ -8,7 +8,7 @@
     },
     "contributors": [],
     "dependencies": {
-        "k-core": "^0.0.2",
+        "k-core": "^0.0.3",
         "lodash": "^4.6.1"
     },
     "main": "main",

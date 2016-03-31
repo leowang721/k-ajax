@@ -7,14 +7,14 @@
  */
 
 import _ from 'lodash';
-import {EventEmitter, Promise, util} from 'k-core';
+import {EventTarget, Promise, util} from 'k-core';
 
 import hooks from './hooks';
 import config from './config';
 
 const REQID_PARAM_KEY = '_';
 
-export class Ajax extends EventEmitter {
+export class Ajax extends EventTarget {
     request(options) {
         if (typeof hooks.beforeExecute === 'function') {
             hooks.beforeExecute(options);
