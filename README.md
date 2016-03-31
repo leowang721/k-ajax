@@ -1,2 +1,2 @@
 # k-ajax
-k-ajax a simple ajax lib
+A simple ajax lib using es6 grammar & syntax.
